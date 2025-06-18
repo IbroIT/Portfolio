@@ -10,12 +10,18 @@ import ContactPage from "./Pages/Contact";
 import ProjectDetails from "./components/ProjectDetail";
 import WelcomeScreen from "./Pages/WelcomeScreen";
 import { AnimatePresence } from 'framer-motion';
-import notfound from "./Pages/404";
 import NotFoundPage from "./Pages/404";
 
-const LandingPage = () => {
+const LandingPage = ({ showWelcome, setShowWelcome }) => {
   return (
     <>
+      <AnimatePresence mode="wait">
+        {showWelcome && (
+          <WelcomeScreen onLoadingComplete={() => setShowWelcome(false)} />
+        )}
+      </AnimatePresence>
+
+      {!showWelcome && (
         <>
           <Navbar />
           <AnimatedBackground />
@@ -36,7 +42,7 @@ const LandingPage = () => {
             </center>
           </footer>
         </>
-      
+      )}
     </>
   );
 };
