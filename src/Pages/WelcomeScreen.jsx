@@ -138,7 +138,7 @@ const WelcomeScreen = ({ onLoadingComplete }) => {
                       Добро пожаловать
                     </span>{' '}
                     <span data-aos="fade-right" data-aos-delay="400" className="inline-block px-2 bg-gradient-to-r from-white via-blue-100 to-purple-200 bg-clip-text text-transparent">
-                      на
+                      в
                     </span>{' '}
                     <span data-aos="fade-right" data-aos-delay="600" className="inline-block px-2 bg-gradient-to-r from-white via-blue-100 to-purple-200 bg-clip-text text-transparent">
                       моё
@@ -146,10 +146,10 @@ const WelcomeScreen = ({ onLoadingComplete }) => {
                   </div>
                   <div>
                     <span data-aos="fade-up" data-aos-delay="800" className="inline-block px-2 bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
-                      Портфолио
+                      творческое 
                     </span>{' '}
                     <span data-aos="fade-up" data-aos-delay="1000" className="inline-block px-2 bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
-                      разработчика
+                      портфолио
                     </span>
                   </div>
                 </h1>
