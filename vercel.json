@@ -1,11 +1,5 @@
 {
   "rewrites": [
     { "source": "/(.*)", "destination": "/" }
-    
   ]
-,
-  "scripts": {
-  "vercel-build": "npm install --legacy-peer-deps && npm run build",
-  "build": "next build"
-  }
 }
