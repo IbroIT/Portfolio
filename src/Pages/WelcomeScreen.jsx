@@ -65,19 +65,29 @@ const WelcomeScreen = ({ onLoadingComplete }) => {
     return () => clearTimeout(timer);
   }, [onLoadingComplete]);
 
-  const containerVariants = {
-    exit: {
-      opacity: 0,
-      scale: 1.1,
-      filter: "blur(10px)",
-      transition: {
-        duration: 0.8,
-        ease: "easeInOut",
-        when: "beforeChildren",
-        staggerChildren: 0.1
-      }
+ const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      duration: 1,
+      when: "beforeChildren",
+      staggerChildren: 0.1
     }
-  };
+  },
+  exit: {
+    opacity: 0,
+    scale: 1.1,
+    filter: "blur(10px)",
+    transition: {
+      duration: 0.8,
+      ease: "easeInOut",
+      when: "beforeChildren",
+      staggerChildren: 0.1
+    }
+  }
+};
+
 
   const childVariants = {
     exit: {
@@ -94,12 +104,13 @@ const WelcomeScreen = ({ onLoadingComplete }) => {
     <AnimatePresence>
       {isLoading && (
         <motion.div
-          className="fixed inset-0 bg-[#030014]"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit="exit"
-          variants={containerVariants}
-        >
+  className="fixed inset-0 bg-[#030014]"
+  variants={containerVariants}
+  initial="hidden"
+  animate="visible"
+  exit="exit"
+>
+
           <BackgroundEffect />
           
           <div className="relative min-h-screen flex items-center justify-center px-4">
