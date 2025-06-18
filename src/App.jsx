@@ -16,13 +16,17 @@ import NotFoundPage from "./Pages/404";
 const LandingPage = ({ showWelcome, setShowWelcome }) => {
   return (
     <>
-     {showWelcome ? (
-  <WelcomeScreen onLoadingComplete={() => setShowWelcome(false)} />
-) : (
-  <>
-    <Navbar />
-    <AnimatedBackground />
-    <Home />
+      <AnimatePresence mode="wait">
+        {showWelcome && (
+          <WelcomeScreen onLoadingComplete={() => setShowWelcome(false)} />
+        )}
+      </AnimatePresence>
+
+      {!showWelcome && (
+        <>
+          <Navbar />
+          <AnimatedBackground />
+          <Home />
           <About />
           <Portofolio />
           <ContactPage />
