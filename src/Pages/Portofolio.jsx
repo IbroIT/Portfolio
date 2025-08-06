@@ -9,7 +9,6 @@ import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
-import CardProject from "../components/CardProject";
 import TechStackIcon from "../components/TechStackIcon";
 import AOS from "aos";
 import "aos/dist/aos.css";
@@ -113,22 +112,21 @@ const techStacks = [
   { icon: "photoshop.svg", language: "Photoshop" },
 ];
 
-// Custom project for Дордой Ассоциации
 const dordoiAssociationProject = {
   id: "dordoi-association",
-  Img: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80", // Replace with actual image
+  Img: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
   Title: "Сайт для Ассоциации Дордой (В разработке)",
   Description: "Официальный веб-сайт Ассоциации Дордой с информацией о деятельности, членах и услугах. Включает административную панель для управления контентом.",
-  Link: "https://dordoi-association.vercel.app/", // Add your actual project link
+  Link: "https://dordoi-eta.vercel.app",
   TechStack: ["React", "Tailwind CSS", "Firebase", "Material UI"],
   features: [
     "Адаптивный дизайн для всех устройств",
-    "Многоязычная поддержка",
     "Система управления контентом",
-    "Галерея мероприятий",
+    "Новости, мероприятия и события",
     "Контакты и обратная связь"
   ]
 };
+
 const fcDordoiProject = {
   id: "fc-dordoi",
   Img: "https://images.unsplash.com/photo-1574629810360-7efbbe195018?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1293&q=80",
@@ -144,7 +142,125 @@ const fcDordoiProject = {
     "Мобильная версия"
   ]
 };
+const tagroup = {
+  id: "ta-group",
+  Img: "/image.png",
+  Title: "TradeAdvisor - инвестиционный консалтинговый сайт",
+  Description: "Современный веб-сайт для финансовой компании, предоставляющей консультационные и аналитические услуги на рынках США. Проект выполнен с фокусом на удобство, безопасность и соответствие юридическим требованиям. В основе — автоматизация, аналитика, AI-модели и прозрачный подход к консультированию инвесторов.",
+  Link: "https://tradesadvisor.ai",
+  TechStack: ["React", "Django", "Tailwind CSS", "PostgreSQL"],
+  features: [
+    "Мультиплатформенность",
+    "Гибкие тарифные планы",
+    "Мультиязычность"
+  ]
+};
 
+// Updated CardProject component with improved styling
+const CardProject = ({ Img, Title, Description, Link, features }) => {
+  const [isHovered, setIsHovered] = useState(false);
+
+  return (
+    <div 
+  className="relative h-full flex flex-col rounded-2xl overflow-hidden border border-white/10 bg-[#0f172a] transition-all duration-500 hover:border-purple-500/30 hover:shadow-xl hover:shadow-purple-500/10 group"
+>
+  {/* Image container with hover effect */}
+  <div className="relative overflow-hidden h-48">
+    <img
+      src={Img}
+      alt={Title}
+      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+    />
+    {/* Gradient overlay */}
+    <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+    {/* Tech stack badges floating on hover */}
+    <div className="absolute top-3 left-3 flex flex-wrap gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+      {features.slice(0, 3).map((feature, index) => (
+        <span 
+          key={index}
+          className="px-2 py-1 bg-black/70 backdrop-blur text-xs text-white rounded-md border border-white/10"
+        >
+          {feature}
+        </span>
+      ))}
+    </div>
+  </div>
+  
+  {/* Content container */}
+  <div className="p-5 flex-1 flex flex-col">
+    <div className="flex items-start justify-between mb-3">
+      <h3 className="text-xl font-bold text-white">{Title}</h3>
+      <span className="inline-flex items-center px-2 py-1 bg-purple-500/10 text-purple-400 text-xs rounded-full border border-purple-500/20">
+       
+      </span>
+    </div>
+    
+    <p className="text-slate-300 text-sm mb-4 flex-1">{Description}</p>
+    
+    {/* Features with animated checkmarks */}
+    {features && features.length > 0 && (
+      <div className="mb-4">
+        <ul className="space-y-2">
+          {features.slice(0, 3).map((feature, index) => (
+            <li 
+              key={index}
+              className="flex items-start group/feature"
+            >
+              <div className="relative mt-0.5 mr-2">
+                <div className="w-4 h-4 rounded-full bg-purple-500/10 border border-purple-500/20 flex items-center justify-center">
+                  <svg 
+                    className="w-3 h-3 text-purple-400 opacity-0 group-hover/feature:opacity-100 transition-opacity duration-300" 
+                    fill="none" 
+                    stroke="currentColor" 
+                    viewBox="0 0 24 24"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                </div>
+              </div>
+              <span className="text-slate-300 text-xs">{feature}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    )}
+    
+    {/* Footer with animated button */}
+    <div className="mt-auto pt-4 border-t border-white/5">
+      <a
+        href={Link}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="
+          relative inline-flex items-center justify-center 
+          px-4 py-2 w-full
+          text-white text-sm font-medium rounded-lg
+          overflow-hidden
+          transition-all duration-300
+          bg-gradient-to-r from-purple-600 to-blue-600
+          hover:from-purple-500 hover:to-blue-500
+          hover:shadow-lg hover:shadow-purple-500/20
+          group/button
+        "
+      >
+        <span className="relative z-10 flex items-center">
+          Открыть проект
+          <svg className="w-4 h-4 ml-2 transition-transform duration-300 group-hover/button:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+          </svg>
+        </span>
+        <span className="absolute inset-0 bg-gradient-to-r from-purple-700 to-blue-700 opacity-0 group-hover/button:opacity-100 transition-opacity duration-300"></span>
+      </a>
+    </div>
+  </div>
+  
+  {/* Glow effect on hover */}
+  <div className="absolute inset-0 rounded-2xl pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+    <div className="absolute -inset-px bg-gradient-to-r from-purple-600/20 to-blue-500/20 rounded-2xl blur-sm"></div>
+  </div>
+</div>
+  );
+};
 
 export default function FullWidthTabs() {
   const theme = useTheme();
@@ -190,10 +306,9 @@ export default function FullWidthTabs() {
     setShowAllProjects(prev => !prev);
   }, []);
 
-  // Combine Firebase projects with the Dordoi Association project (put it first)
-  const allProjects = [dordoiAssociationProject, fcDordoiProject, ...projects];
+  // Combine Firebase projects with the custom projects
+  const allProjects = [dordoiAssociationProject, fcDordoiProject, tagroup,];
   const displayedProjects = showAllProjects ? allProjects : allProjects.slice(0, initialItems);
-
 
   return (
     <div className="md:px-[10%] px-[5%] w-full sm:mt-0 mt-[3rem] bg-[#030014] overflow-hidden" id="Portofolio">
@@ -302,27 +417,27 @@ export default function FullWidthTabs() {
         >
           <TabPanel value={value} index={0} dir={theme.direction}>
             <div className="container mx-auto flex justify-center items-center overflow-hidden">
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 2xl:grid-cols-3 gap-5">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full">
                 {displayedProjects.map((project, index) => (
                   <div
                     key={project.id || index}
                     data-aos={index % 3 === 0 ? "fade-up-right" : index % 3 === 1 ? "fade-up" : "fade-up-left"}
                     data-aos-duration={index % 3 === 0 ? "1000" : index % 3 === 1 ? "1200" : "1000"}
+                    className="h-full"
                   >
                     <CardProject
                       Img={project.Img}
                       Title={project.Title}
                       Description={project.Description}
                       Link={project.Link}
-                      id={project.id}
-                      features={project.features} // Pass features if your CardProject supports them
+                      features={project.features}
                     />
                   </div>
                 ))}
               </div>
             </div>
             {allProjects.length > initialItems && (
-              <div className="mt-6 w-full flex justify-center">
+              <div className="mt-10 w-full flex justify-center">
                 <ToggleButton
                   onClick={toggleShowMore}
                   isShowingMore={showAllProjects}

@@ -167,7 +167,7 @@ const Home = () => {
             <div className="w-full lg:w-1/2 space-y-6 sm:space-y-8 text-left lg:text-left order-1 lg:order-1 lg:mt-0"
               data-aos="fade-right"
               data-aos-delay="200">
-              <div className="space-y-4 sm:space-y-6">
+              <div className="ml-0 lg:ml-36 sm:mt-32 space-y-4 sm:space-y-6">
                 <StatusBadge />
                 <MainTitle />
 
