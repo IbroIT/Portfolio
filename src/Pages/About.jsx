@@ -191,11 +191,10 @@ const AboutPage = () => {
               data-aos="fade-right"
               data-aos-duration="1500"
             >
-             Здравствуйте! Меня зовут Абдраимов Иброхим, мне 16 лет, я дизайнер, front-end разработчик и менеджер проектов. Я учусь в Salymbekov University по направлению Computer Science и уже более двух лет создаю современные цифровые продукты: от сайтов и анимаций до фирменных стилей и интерактивных презентаций.
-            </p>
+проектный менеджер и full-stack разработчик, который превращает идеи в живые цифровые проекты. Я люблю создавать дизайн, писать код и видеть, как всё соединяется в единое целое. Мои проекты сочетают эстетику, функциональность и технологичность. Верю, что хороший продукт начинается с продуманной идеи и сильной команды.            </p>
 
             <div className="flex flex-col lg:flex-row items-center lg:items-start gap-4 lg:gap-4 lg:px-0 w-full">
-              <a href="https://drive.google.com/file/d/1Ob4XQXnhZUaTUIHv-zaAu3Hsdm7MMdH8/view?usp=sharing" className="w-full lg:w-auto">
+              <a href="https://drive.google.com/file/d/1lAi6OwRlb2wCU_m6w1Og3oWT8pg3LzOF/view?usp=sharing" className="w-full lg:w-auto">
               <button 
                 data-aos="fade-up"
                 data-aos-duration="800"

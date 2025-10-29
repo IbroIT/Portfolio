@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Share2, User, Mail, MessageSquare, Send } from "lucide-react";
 import { Link } from "react-router-dom";
 import SocialLinks from "../components/SocialLinks";
@@ -6,6 +6,7 @@ import Komentar from "../components/Commentar";
 import Swal from "sweetalert2";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import emailjs from '@emailjs/browser';
 
 const ContactPage = () => {
   const [formData, setFormData] = useState({
@@ -14,6 +15,7 @@ const ContactPage = () => {
     message: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const formRef = useRef();
 
   useEffect(() => {
     AOS.init({
@@ -43,14 +45,15 @@ const ContactPage = () => {
     });
 
     try {
-      // Get form data
-      const form = e.target;
-      const formData = new FormData(form);
+      // Отправка формы через EmailJS
+      const result = await emailjs.sendForm(
+        'service_bzgrvix', // Замените на ваш Service ID
+        'template_0vdsz5a', // Замените на ваш Template ID
+        formRef.current,
+        'xH6CM7m7FWrPZ7OA2' // Замените на ваш Public Key
+      );
 
-      // Submit form
-      await form.submit();
-
-      // Show success message
+      // Показать сообщение об успехе
       Swal.fire({
         title: 'Success!',
         text: 'Your message has been sent successfully!',
@@ -60,13 +63,14 @@ const ContactPage = () => {
         timerProgressBar: true
       });
 
-      // Reset form
+      // Сбросить форму
       setFormData({
         name: "",
         email: "",
         message: "",
       });
     } catch (error) {
+      console.error('EmailJS Error:', error);
       Swal.fire({
         title: 'Error!',
         text: 'Something went wrong. Please try again later.',
@@ -114,7 +118,6 @@ const ContactPage = () => {
       >
         <div className="container px-[1%] grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-[45%_55%] 2xl:grid-cols-[35%_65%] gap-12" >
           <div
-        
             className="bg-white/5 backdrop-blur-xl rounded-3xl shadow-2xl p-5 py-10 sm:p-10 transform transition-all duration-500 hover:shadow-[#6366f1]/10"
           >
             <div className="flex justify-between items-start mb-8">
@@ -130,15 +133,10 @@ const ContactPage = () => {
             </div>
 
             <form 
-              action="https://formsubmit.co/ibroabdraimov20@gmail.com"
-              method="POST"
+              ref={formRef}
               onSubmit={handleSubmit}
               className="space-y-6"
             >
-              {/* FormSubmit Configuration */}
-              <input type="hidden" name="_template" value="table" />
-              <input type="hidden" name="_captcha" value="false" />
-
               <div
                 data-aos="fade-up"
                 data-aos-delay="100"
