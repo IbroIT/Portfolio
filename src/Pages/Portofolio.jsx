@@ -23,7 +23,7 @@ import ELibraryImg from '../assets/Library.png';
 import AGIImg from '../assets/AGIALPHA.png';
 import KGAFKISImg from '../assets/PA.png';
 import AdelyaKidsImg from '../assets/Adelya kids.png';
-
+import PlanImg from '../assets/Plan.png';
 function TabPanel({ children, value, index, ...other }) {
   return (
     <div
@@ -35,7 +35,7 @@ function TabPanel({ children, value, index, ...other }) {
     >
       {value === index && (
         <Box sx={{ p: { xs: 1, sm: 3 } }}>
-          <Typography>{children}</Typography>
+          {children}
         </Box>
       )}
     </div>
@@ -69,6 +69,23 @@ const techStacks = [
   { icon: "vercel.svg", language: "Vercel" },
   { icon: "photoshop.svg", language: "Photoshop" },
 ];
+
+const planKg = {
+  id: "plan-kg",
+  Img: PlanImg, // твоя картинка/скриншот сайта
+  Title: "Платформа для планирования мероприятий Plan.kg",
+  Description:
+    "Современная веб-платформа для создания и управления мероприятиями. Сайт позволяет организаторам планировать события, управлять гостями, распределять роли и контролировать ресурсы.",
+  Link: "https://plan.kg",
+  TechStack: ["React", "Node.js", "REST API", "Responsive UI"],
+  features: [
+    "Создание и управление мероприятиями",
+    "Система ролей и командной координации",
+    "Управление списком гостей и регистрациями",
+    "Планировщик пространства и ресурсов",
+    "Простая и удобная навигация"
+  ]
+};
 
 const dordoiAssociationProject = {
   id: "dordoi-association",
@@ -120,7 +137,7 @@ const tagroup = {
 const telegramRentalApp = {
   id: "telegram-rental",
   Img: TelegramAppImg,
-  Title: "Telegram App - Аренда авто, жилья и экскурсий",
+  Title: "Rent Area - Аренда авто, жилья и экскурсий",
   Description:
     "Многофункциональное Telegram приложение для аренды автомобилей, мотоциклов, домов и организации экскурсий. Интуитивный интерфейс и удобная система бронирования.",
   Link: "https://t.me/tg_mini_app_daniel_test_bot",
@@ -154,7 +171,7 @@ const salymbekovCollege = {
   Img: CollegeImg,
   Title: "Сайт колледжа Салымбеков Университет",
   Description: "Современный веб-сайт для колледжа с информацией о специальностях, условиях поступления, студенческой жизни и достижениях.",
-  Link: "https://su-college.vercel.app",
+  Link: "https://su-college.com",
   TechStack: ["Vue.js", "Express", "MySQL", "Bootstrap"],
   features: [
     "Каталог специальностей",
@@ -169,7 +186,7 @@ const salymbekovELibrary = {
   Img: ELibraryImg,
   Title: "Электронная библиотека Салымбеков Университет",
   Description: "Современная платформа электронной библиотеки с обширной коллекцией учебных материалов, научных работ и цифровых ресурсов для студентов и преподавателей.",
-  Link: "https://su-e-library.vercel.app",
+  Link: "https://su-library.com",
   TechStack: ["React", "Node.js", "MongoDB", "Elasticsearch"],
   features: [
     "Обширная база учебных материалов",
@@ -373,6 +390,7 @@ export default function FullWidthTabs() {
 
   // Combine all projects
   const allProjects = [
+    planKg,
     dordoiAssociationProject, 
     fcDordoiProject, 
     tagroup,
