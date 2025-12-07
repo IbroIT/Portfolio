@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback, memo } from "react"
 import { Github, Linkedin, Mail, ExternalLink, Instagram, Sparkles } from "lucide-react"
-import { DotLottieReact } from '@lottiefiles/dotlottie-react'
+import Lottie from 'lottie-react'
 import AOS from 'aos'
 import 'aos/dist/aos.css'
 
@@ -92,6 +92,7 @@ const Home = () => {
   const [charIndex, setCharIndex] = useState(0)
   const [isLoaded, setIsLoaded] = useState(false)
   const [isHovering, setIsHovering] = useState(false)
+  const [animationData, setAnimationData] = useState(null)
 
   // Optimize AOS initialization
   useEffect(() => {
@@ -111,6 +112,13 @@ const Home = () => {
   useEffect(() => {
     setIsLoaded(true);
     return () => setIsLoaded(false);
+  }, []);
+
+  useEffect(() => {
+    fetch('/Lottie.json')
+      .then(response => response.json())
+      .then(data => setAnimationData(data))
+      .catch(error => console.error('Error loading animation:', error));
   }, []);
 
   // Optimize typing effect
@@ -140,19 +148,6 @@ const Home = () => {
     );
     return () => clearTimeout(timeout);
   }, [handleTyping]);
-
-  // Lottie configuration
-  const lottieOptions = {
-    src: "https://lottie.host/58753882-bb6a-49f5-a2c0-950eda1e135a/NLbpVqGegK.lottie",
-    loop: true,
-    autoplay: true,
-    style: { width: "100%", height: "100%" },
-    className: `w-full h-full transition-all duration-500 ${
-      isHovering 
-        ? "scale-[180%] sm:scale-[160%] md:scale-[150%] lg:scale-[145%] rotate-2" 
-        : "scale-[175%] sm:scale-[155%] md:scale-[145%] lg:scale-[140%]"
-    }`
-  };
 
   return (
     <div className="min-h-screen bg-[#030014] overflow-hidden" id="Home">
@@ -219,7 +214,7 @@ const Home = () => {
                 <div className={`relative z-10 w-full opacity-90 transform transition-transform duration-500 ${
                   isHovering ? "scale-105" : "scale-100"
                 }`}>
-                  <DotLottieReact {...lottieOptions} />
+                  {animationData && <Lottie animationData={animationData} loop={true} />}
                 </div>
 
                 <div className={`absolute inset-0 pointer-events-none transition-all duration-700 ${
