@@ -2,7 +2,6 @@ import React, { useState, useEffect, useRef } from "react";
 import { Share2, User, Mail, MessageSquare, Send } from "lucide-react";
 import { Link } from "react-router-dom";
 import SocialLinks from "../components/SocialLinks";
-import Komentar from "../components/Commentar";
 import Swal from "sweetalert2";
 import AOS from "aos";
 import "aos/dist/aos.css";
@@ -116,26 +115,35 @@ const ContactPage = () => {
         className="h-auto py-10 flex items-center justify-center px-[5%] md:px-0"
         id="Contact"
       >
-        <div className="container px-[1%] grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-[45%_55%] 2xl:grid-cols-[35%_65%] gap-12" >
+        <div className="container px-[1%] max-w-4xl">
           <div
-            className="bg-white/5 backdrop-blur-xl rounded-3xl shadow-2xl p-5 py-10 sm:p-10 transform transition-all duration-500 hover:shadow-[#6366f1]/10"
+            className="bg-white/5 backdrop-blur-xl rounded-3xl shadow-2xl p-5 py-10 sm:p-10 transform transition-all duration-500 hover:shadow-[#6366f1]/20 hover:scale-[1.02] border border-white/10"
+            data-aos="zoom-in"
+            data-aos-duration="1000"
           >
-            <div className="flex justify-between items-start mb-8">
-              <div>
-                <h2 className="text-4xl font-bold mb-3 text-transparent bg-clip-text bg-gradient-to-r from-[#6366f1] to-[#a855f7]">
-                  Свяжитесь со мной
-                </h2>
-                <p className="text-gray-400">
-                  Хотите что-то обсудить? Напишите мне, и давайте поговорим.
-                </p>
-              </div>
-              <Share2 className="w-10 h-10 text-[#6366f1] opacity-50" />
+            <div className="text-center mb-8">
+              <h2 
+                className="text-4xl font-bold mb-3 text-transparent bg-clip-text bg-gradient-to-r from-[#6366f1] to-[#a855f7]"
+                data-aos="fade-down"
+                data-aos-delay="200"
+              >
+                Свяжитесь со мной
+              </h2>
+              <p 
+                className="text-gray-400"
+                data-aos="fade-up"
+                data-aos-delay="300"
+              >
+                Хотите что-то обсудить? Напишите мне, и давайте поговорим.
+              </p>
             </div>
 
             <form 
               ref={formRef}
               onSubmit={handleSubmit}
               className="space-y-6"
+              data-aos="fade-in"
+              data-aos-delay="400"
             >
               <div
                 data-aos="fade-up"
@@ -199,13 +207,13 @@ const ContactPage = () => {
               </button>
             </form>
 
-            <div className="mt-10 pt-6 border-t border-white/10 flex justify-center space-x-6">
+            <div 
+              className="mt-10 pt-6 border-t border-white/10 flex justify-center space-x-6"
+              data-aos="fade-up"
+              data-aos-delay="500"
+            >
               <SocialLinks />
             </div>
-          </div>
-
-          <div className="bg-white/5 backdrop-blur-xl rounded-3xl p-3 py-3 md:p-10 md:py-8 shadow-2xl transform transition-all duration-500 hover:shadow-[#6366f1]/10">
-            <Komentar />
           </div>
         </div>
       </div>
