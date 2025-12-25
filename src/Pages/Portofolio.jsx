@@ -92,7 +92,7 @@ const dordoiAssociationProject = {
   Img: DordoiImage,
   Title: "Сайт для Ассоциации Дордой (В разработке)",
   Description: "Официальный веб-сайт Ассоциации Дордой с информацией о деятельности, членах и услугах. Включает административную панель для управления контентом.",
-  Link: "https://dordoi-association-henna.vercel.app",
+  Link: "https://dordoi.info",
   TechStack: ["React", "Tailwind CSS", "Firebase", "Material UI"],
   features: [
     "Адаптивный дизайн для всех устройств",
